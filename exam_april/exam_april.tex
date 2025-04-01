@@ -1,0 +1,213 @@
+% arara: xelatex
+\documentclass[12pt]{article}
+
+% \usepackage{physics}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\urlstyle{same}
+
+\usepackage{tikzducks}
+
+\usepackage{tikz} % картинки в tikz
+\usepackage{microtype} % свешивание пунктуации
+
+\usepackage{array} % для столбцов фиксированной ширины
+
+\usepackage{indentfirst} % отступ в первом параграфе
+
+\usepackage{sectsty} % для центрирования названий частей
+\allsectionsfont{\centering}
+
+\usepackage{amsmath, amsfonts, amssymb} % куча стандартных математических плюшек
+
+\usepackage{mathtools}
+\usepackage{comment}
+
+\usepackage[top=2cm, left=1.2cm, right=1.2cm, bottom=2cm]{geometry} % размер текста на странице
+
+\usepackage{lastpage} % чтобы узнать номер последней страницы
+
+\usepackage{enumitem} % дополнительные плюшки для списков
+%  например \begin{enumerate}[resume] позволяет продолжить нумерацию в новом списке
+\usepackage{caption}
+
+\usepackage{url} % to use \url{link to web}
+
+
+\newcommand{\smallduck}{\begin{tikzpicture}[scale=0.3]
+    \duck[
+        cape=black,
+        hat=black,
+        mask=black
+    ]
+    \end{tikzpicture}}
+
+\usepackage{fancyhdr} % весёлые колонтитулы
+\pagestyle{fancy}
+\lhead{КНАД, статистика}
+\chead{}
+\rhead{2024-04-01}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{tcolorbox} % рамочки!
+
+\usepackage{todonotes} % для вставки в документ заметок о том, что осталось сделать
+% \todo{Здесь надо коэффициенты исправить}
+% \missingfigure{Здесь будет Последний день Помпеи}
+% \listoftodos - печатает все поставленные \todo'шки
+
+
+% более красивые таблицы
+\usepackage{booktabs}
+% заповеди из докупентации:
+% 1. Не используйте вертикальные линни
+% 2. Не используйте двойные линии
+% 3. Единицы измерения - в шапку таблицы
+% 4. Не сокращайте .1 вместо 0.1
+% 5. Повторяющееся значение повторяйте, а не говорите "то же"
+
+
+\setcounter{MaxMatrixCols}{20}
+% by crazy default pmatrix supports only 10 cols :)
+
+
+\usepackage{fontspec}
+\usepackage{libertine}
+\usepackage{polyglossia}
+
+\setmainlanguage{russian}
+\setotherlanguages{english}
+
+% download "Linux Libertine" fonts:
+% http://www.linuxlibertine.org/index.php?id=91&L=1
+% \setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+% \newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
+\setlist[enumerate, 2]{label=\asbuk*),ref=\asbuk*}
+
+%% эконометрические сокращения
+\DeclareMathOperator{\Cov}{\mathbb{C}ov}
+\DeclareMathOperator{\Corr}{\mathbb{C}orr}
+\DeclareMathOperator{\Var}{\mathbb{V}ar}
+\DeclareMathOperator{\pCorr}{\mathrm{pCorr}}
+\DeclareMathOperator{\col}{col}
+\DeclareMathOperator{\row}{row}
+
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\scalp}{\langle}{\rangle}
+
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}}
+\DeclareMathOperator{\plim}{plim}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+% \DeclareMathOperator{\tr}{trace}
+\DeclareMathOperator{\card}{card}
+
+\DeclareMathOperator{\Convex}{Convex}
+
+\newcommand \cN{\mathcal{N}}
+\newcommand \dN{\mathcal{N}}
+
+
+\newcommand \RR{\mathbb{R}}
+\newcommand \NN{\mathbb{N}}
+
+\newcommand{\dBern}{\mathrm{Bern}}
+\newcommand{\dBin}{\mathrm{Bin}}
+\newcommand{\dGamma}{\mathrm{Gamma}}
+\newcommand{\dBeta}{\mathrm{Beta}}
+
+
+
+\begin{document}
+
+
+\begin{enumerate}
+    \item Время до прихода автобуса в $i$-й день — случайная величина $x_i$, имеющая экспоненциальное распределение с неизвестной интенсивностью $\lambda$. 
+    Величины $x_i$ независимы. 
+    Если автобус не приходит за $10$ минут, то я ухожу с остановки и иду пешком. 
+    Вектор $y$ содержит время, проведённое мной на остановке в каждый день.
+    
+    \begin{enumerate}
+      \item {[4]} Найдите оценку $\lambda$ методом максимального правдоподобия по выборке $y = (5, 10, 6, 10)$.
+      \item {[4]} Найдите оценку $\lambda$ методом максимального правдоподобия по 
+      произвольной выборке $y$. 
+      \item {[2]} Оцените методом максимального правдоподобия вероятность того, что я иду пешком по произвольной выборке $y$.
+    \end{enumerate}
+    
+    
+    \item Величины $(x_i)$ независимы и равномерно распределены на отрезке $[-a, 2a]$ с неизвестным $a > 0$.
+    
+    Я наблюдаю величины $y_i = \abs{x_i}$.
+
+    \begin{enumerate}
+        \item {[4]} Найдите $\E(y_i)$ и $\E(y_i^2)$.
+        \item {[3]} Постройте оценку метода моментов параметра $a$ для произвольной выборки $y_1$, $y_2$, \dots, $y_n$, 
+используя первый момент. 
+\item {[3]} Постройте оценку метода моментов параметра $a$ для произвольной выборки $y_1$, $y_2$, \dots, $y_n$, 
+используя второй момент. 
+    \end{enumerate}
+
+    \item Величины $(X_i)$ независимы и экспоненциально распределены с интенсивностью $\lambda$.
+    
+    Рассмотрим оценку неизвестного параметра $a = 1/\lambda^2$:
+    \[
+ \hat a = \frac{X_1^2 + X_2^2 + \dots + X_n^2}{2n + 1}
+    \]
+
+    \begin{enumerate}
+        \item {[5]} Является ли оценка несмещённой?
+        \item {[5]} Является ли оценка состоятельной?
+    \end{enumerate}
+
+\item Величины $(X_i)$ независимы и одинаково распределены с ожиданием $2a$ и дисперсией $a^2$.
+
+Известно, что оценка $\hat b = (4 + 3\bar X)/(3 + \bar X)$ является состоятельной для параметра $b$. 
+По выборке из 1000 наблюдений оказалось, что $\bar X = 2$.
+
+\begin{enumerate}
+    \item {[7]} Найдите стандартную ошибку $se(\hat b)$ с помощью дельта-метода.
+    \item {[3]} Постройте 95\% асимптотический доверительный интервал для $b$.
+\end{enumerate}
+
+\item Илон Маск оценивает один неизвестный параметр $a$ методом максимального правдоподобия.
+По выборке из $1000$ наблюдений оказалось, что $\hat a = 12$, а вторая производная лог-правдоподобия равна $\ell''(\hat a) = -400$.
+\begin{enumerate}
+    \item {[5]} Оцените информацию Фишера. 
+    \item {[3]} Постройте 95\% асимптотический доверительный интервал для $a$.
+    \item {[2]} Постройте 95\% асимптотический доверительный интервал для $a^3$ любым способом.
+\end{enumerate}
+
+\item Среди 100 случайно выбранных рептилоидов 20 любят вышки 5G. 
+Постройте асимпотический 95\%-й доверительный интервал для доли рептилоидов, любящих вышки 5G, двумя способами:
+\begin{enumerate}
+    \item {[5]} Используя статистику $(\hat p - p)/\sqrt{\widehat{\Var}(\hat p)}$ с решением линейного неравенства.
+    \item {[5]} Используя статистику $(\hat p - p)/\sqrt{\Var(\hat p)}$ с решением квадратного неравенства.
+\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document}
+
+
