@@ -208,6 +208,33 @@
 
 \end{enumerate}
 
+Ответы и подсказки
+\begin{enumerate}
+
+    \item Заметим, что $\P(y_i = 10) = \P(x_i \geq 10) = \exp(-10 \lambda)$.
+    Функция правдоподобия для данной выборки равна $f(y_1, y_2, y_3, y_4) = \lambda \exp(-5\lambda)\exp(-10\lambda)\lambda\exp(-6\lambda)\exp(-10\lambda)$.
+
+    Максимум достигается в точке $\hat\lambda = 2/31$.
+
+    В общем случае $\hat\lambda = K/\sum y_i$, где $K$ — число наблюдений равных $10$.
+
+    Оценка вероятности получается заменой $\lambda$ на $\hat\lambda$ в формуле для вероятности и  равна $\hat p = \exp(-10\hat\lambda)$.
+
+    \item $\E(y_i) = 5/6a$, $\E(y_i^2) = a^2$; $\hat a_1 = 6/5 \bar y$, $\hat a_2 = \sqrt{\sum y_i^2 /n}$.
+    
+    \item $\E(\hat a) = \frac{1}{\lambda^2} \frac{2n}{2n+1} \neq a$, оценка смещённая.
+    $\plim \hat a= a$, оценка состоятельная. 
+    \item $\hat a = 1$, $\hat b = 2$, $se(\bar x) = \hat a/\sqrt{1000} = 1/\sqrt{1000}$, $\hat b = h(\bar x)$, 
+    $h'(b) = h'(2a) = 5/(2a+3)^2$, $se(\hat b) = 5/5^2 se(\bar x)$.
+    
+    \item $\hat I = 400$, $se(\hat a) = 1/sqrt{400} = 0.05$, доверительный интервал $12 \pm 1.96 \cdot se(\hat a)$.
+    \item $\hat p = 0.2$, в одном случае решаем относительно $p$ неравенство $\abs{(\hat p - p) / \sqrt{\hat p (1 - \hat p)/n}} \leq z_{cr}$,
+    во втором случае — $\abs{(\hat p - p) / \sqrt{p (1 - p)/n}} \leq z_{cr}$
+
+
+\end{enumerate}
+
+
 \end{document}
 
 
