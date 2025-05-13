@@ -1,0 +1,216 @@
+% arara: xelatex
+\documentclass[12pt]{article}
+
+% \usepackage{physics}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\urlstyle{same}
+
+\usepackage{tikzducks}
+
+\usepackage{tikz} % картинки в tikz
+\usepackage{microtype} % свешивание пунктуации
+
+\usepackage{array} % для столбцов фиксированной ширины
+
+\usepackage{indentfirst} % отступ в первом параграфе
+
+\usepackage{sectsty} % для центрирования названий частей
+\allsectionsfont{\centering}
+
+\usepackage{amsmath, amsfonts, amssymb} % куча стандартных математических плюшек
+
+\usepackage{mathtools}
+\usepackage{comment}
+
+\usepackage[top=2cm, left=1.2cm, right=1.2cm, bottom=2cm]{geometry} % размер текста на странице
+
+\usepackage{lastpage} % чтобы узнать номер последней страницы
+
+\usepackage{enumitem} % дополнительные плюшки для списков
+%  например \begin{enumerate}[resume] позволяет продолжить нумерацию в новом списке
+\usepackage{caption}
+
+\usepackage{url} % to use \url{link to web}
+
+
+\newcommand{\smallduck}{\begin{tikzpicture}[scale=0.3]
+    \duck[
+        cape=black,
+        hat=black,
+        mask=black
+    ]
+    \end{tikzpicture}}
+
+\usepackage{fancyhdr} % весёлые колонтитулы
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{Демо версия, май 2025}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{tcolorbox} % рамочки!
+
+\usepackage{todonotes} % для вставки в документ заметок о том, что осталось сделать
+% \todo{Здесь надо коэффициенты исправить}
+% \missingfigure{Здесь будет Последний день Помпеи}
+% \listoftodos - печатает все поставленные \todo'шки
+
+
+% более красивые таблицы
+\usepackage{booktabs}
+% заповеди из докупентации:
+% 1. Не используйте вертикальные линни
+% 2. Не используйте двойные линии
+% 3. Единицы измерения - в шапку таблицы
+% 4. Не сокращайте .1 вместо 0.1
+% 5. Повторяющееся значение повторяйте, а не говорите "то же"
+
+
+\setcounter{MaxMatrixCols}{20}
+% by crazy default pmatrix supports only 10 cols :)
+
+
+\usepackage{fontspec}
+\usepackage{libertine}
+\usepackage{polyglossia}
+
+\setmainlanguage{russian}
+\setotherlanguages{english}
+
+% download "Linux Libertine" fonts:
+% http://www.linuxlibertine.org/index.php?id=91&L=1
+% \setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+% \newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
+\setlist[enumerate, 2]{label=\asbuk*),ref=\asbuk*}
+
+%% эконометрические сокращения
+\DeclareMathOperator{\Cov}{\mathbb{C}ov}
+\DeclareMathOperator{\Corr}{\mathbb{C}orr}
+\DeclareMathOperator{\Var}{\mathbb{V}ar}
+\DeclareMathOperator{\pCorr}{\mathrm{pCorr}}
+\DeclareMathOperator{\col}{col}
+\DeclareMathOperator{\row}{row}
+
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\scalp}{\langle}{\rangle}
+
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}}
+\DeclareMathOperator{\plim}{plim}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+% \DeclareMathOperator{\tr}{trace}
+\DeclareMathOperator{\card}{card}
+
+\DeclareMathOperator{\Convex}{Convex}
+
+\newcommand \cN{\mathcal{N}}
+\newcommand \dN{\mathcal{N}}
+
+
+\newcommand \RR{\mathbb{R}}
+\newcommand \NN{\mathbb{N}}
+
+\newcommand{\dBern}{\mathrm{Bern}}
+\newcommand{\dBin}{\mathrm{Bin}}
+\newcommand{\dGamma}{\mathrm{Gamma}}
+\newcommand{\dBeta}{\mathrm{Beta}}
+
+
+
+\begin{document}
+
+\section*{Формат}
+
+В контрольной будет 6 задач.
+Задачи имеют равный вес. 
+Продолжительность работы 120 минут. 
+Можно будет использовать в качестве разрешенной шпаргалки один лист А4 со всех шести его сторон.
+
+
+
+\section*{Вариант «Васко да Гама»}
+\begin{enumerate}
+    \item В пруду встречаются караси, щуки и налимы. 
+    Вид каждой выловленной рыбы не зависит от других выловленных рыб.
+    Кот Матроскин поймал 200 рыб: 50 карасей, 70 щук и 80 налимов. 
+
+    \begin{enumerate}
+        \item С помощью критерия хи-квадрат Пирсона на уровне значимости $5\%$ проверьте гипотезу о том, что вероятности равны $0.2$, $0.4$ и $0.4$, 
+        соответственно, против альтернативной гипотезы о том, что хотя бы одна из вероятностей отлична от предлагаемых.
+        \item Укажите $p$-значение для теста из пункта (а).
+    \end{enumerate}
+    
+    \item Дональд Трамп проверяет $100$ нулевых гипотез против $100$ альтернативных гипотез с помощью подсчёта $p$-значений.
+    Все нулевые гипотезы верны. 
+    Предположим, что $p$-значения независимы. 
+    Дональд отвергает очередную $H_0$, если её $p$-значение меньше $0.02$.
+
+    \begin{enumerate}
+        \item Какова вероятность того, что Дональд ошибочно отвергнет хотя бы одну нулевую гипотезу?
+        \item Какова вероятность того, что Дональд ошибочно отвергнет ровно $2$ нулевых гипотезы?
+        \item Сколько в среднем нулевых гипотез отвергает Дональд?
+    \end{enumerate}
+    
+    
+    \item Наблюдаемая величина $X$ распределена равномерно на отрезке $[0, a]$, где $a$ — неизвестный параметр.
+    
+    Постройте 95\%-й интервал вида $[0, kX]$ для 80\%-го квантиля величины $X$. 
+
+    \item Величины $(x_i)$ независимы и одинаково распределены с неизвестным ожиданием $\mu$ и конечной дисперсией.
+    По выборке размера $n = 1000$ оказалось, что выборочное среднее равно $20$, 
+    а несмещённая оценка дисперсии $x_i$ равна $500$.
+
+    Винни-Пух хочет протестировать гипотезу $H_0$: $\mu = 15$ против альтернативы $H_1$: $\mu > 15$ на уровне значимости 5\%.
+    \begin{enumerate}
+        \item Проведите данные тест с помощью сравнения критического и наблюдаемого значения классической статистики. 
+        \item Укажите $p$-значение для теста из пункта (a).
+    \end{enumerate}
+
+    \item Известны результаты шести студентов по первой контрольной работе $x = (43, 56, 59, 48, 29, 63)$ и 
+    результаты тех же студентов по второй работе $y = (48, 50, 66, 40, 39, 59)$.
+
+    Предположим, что разницы результатов независимы и одинаково непрерывно симметрично распределены с ожиданием $\mu$.
+
+    С помощью теста знаковых рангов Уилкоксона проверьте гипотезу $\mu = 0$ против альтернативы $\mu \neq 0$ на уровне значимости $5\%$.
+
+
+    \item Априорное распределение параметра $a$ является равномерным на отрезке $[0, 10]$.
+    Ненаблюдаемая величина $Y$ равномерно распределены на отрезке $[0, 20]$.
+    Известно, что $Y$ оказалось больше $a$.
+
+    \begin{enumerate}
+        \item Найдите апостериорное распределение параметра $a$. 
+        \item Найдите апостериорное ожидание и медиану параметра $a$. 
+        \item Постройте любой 94\% апостериорный интервал для $a$. 
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+
+
+
+\end{document}
+
