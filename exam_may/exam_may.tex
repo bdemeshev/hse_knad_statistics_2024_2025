@@ -1,0 +1,223 @@
+% arara: xelatex
+\documentclass[12pt]{article}
+
+% \usepackage{physics}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\urlstyle{same}
+
+\usepackage{tikzducks}
+
+\usepackage{tikz} % картинки в tikz
+\usepackage{microtype} % свешивание пунктуации
+
+\usepackage{array} % для столбцов фиксированной ширины
+
+\usepackage{indentfirst} % отступ в первом параграфе
+
+\usepackage{sectsty} % для центрирования названий частей
+\allsectionsfont{\centering}
+
+\usepackage{amsmath, amsfonts, amssymb} % куча стандартных математических плюшек
+
+\usepackage{mathtools}
+\usepackage{comment}
+
+\usepackage[top=2cm, left=1.2cm, right=1.2cm, bottom=2cm]{geometry} % размер текста на странице
+
+\usepackage{lastpage} % чтобы узнать номер последней страницы
+
+\usepackage{enumitem} % дополнительные плюшки для списков
+%  например \begin{enumerate}[resume] позволяет продолжить нумерацию в новом списке
+\usepackage{caption}
+
+\usepackage{url} % to use \url{link to web}
+
+
+\newcommand{\smallduck}{\begin{tikzpicture}[scale=0.3]
+    \duck[
+        cape=black,
+        hat=black,
+        mask=black
+    ]
+    \end{tikzpicture}}
+
+\usepackage{fancyhdr} % весёлые колонтитулы
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{Контрольная работа, 17 мая 2025}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{tcolorbox} % рамочки!
+
+\usepackage{todonotes} % для вставки в документ заметок о том, что осталось сделать
+% \todo{Здесь надо коэффициенты исправить}
+% \missingfigure{Здесь будет Последний день Помпеи}
+% \listoftodos - печатает все поставленные \todo'шки
+
+
+% более красивые таблицы
+\usepackage{booktabs}
+% заповеди из докупентации:
+% 1. Не используйте вертикальные линни
+% 2. Не используйте двойные линии
+% 3. Единицы измерения - в шапку таблицы
+% 4. Не сокращайте .1 вместо 0.1
+% 5. Повторяющееся значение повторяйте, а не говорите "то же"
+
+
+\setcounter{MaxMatrixCols}{20}
+% by crazy default pmatrix supports only 10 cols :)
+
+
+\usepackage{fontspec}
+\usepackage{libertine}
+\usepackage{polyglossia}
+
+\setmainlanguage{russian}
+\setotherlanguages{english}
+
+% download "Linux Libertine" fonts:
+% http://www.linuxlibertine.org/index.php?id=91&L=1
+% \setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+% \newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
+\setlist[enumerate, 2]{label=\asbuk*),ref=\asbuk*}
+
+%% эконометрические сокращения
+\DeclareMathOperator{\Cov}{\mathbb{C}ov}
+\DeclareMathOperator{\Corr}{\mathbb{C}orr}
+\DeclareMathOperator{\Var}{\mathbb{V}ar}
+\DeclareMathOperator{\pCorr}{\mathrm{pCorr}}
+\DeclareMathOperator{\col}{col}
+\DeclareMathOperator{\row}{row}
+
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\scalp}{\langle}{\rangle}
+
+\let\H\relax
+\DeclareMathOperator{\H}{\mathbb{H}}
+\DeclareMathOperator{\plim}{plim}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+% \DeclareMathOperator{\tr}{trace}
+\DeclareMathOperator{\card}{card}
+
+\DeclareMathOperator{\Convex}{Convex}
+
+\newcommand \cN{\mathcal{N}}
+\newcommand \dN{\mathcal{N}}
+
+
+\newcommand \RR{\mathbb{R}}
+\newcommand \NN{\mathbb{N}}
+
+\newcommand{\dBern}{\mathrm{Bern}}
+\newcommand{\dBin}{\mathrm{Bin}}
+\newcommand{\dGamma}{\mathrm{Gamma}}
+\newcommand{\dBeta}{\mathrm{Beta}}
+
+
+
+\begin{document}
+
+\begin{enumerate}
+    \item В пруду встречаются караси, щуки и налимы. 
+    Кот Матроскин поймал 200 рыб: 50 карасей, 70 щук и 80 налимов. 
+    Кот Леопольд поймал 100 рыб: 10 карасей, 40 щук и 50 налимов. 
+
+    \begin{enumerate}
+        \item {[7]} С помощью критерия хи-квадрат Пирсона на уровне значимости $5\%$ проверьте гипотезу о независимости вида выловленной рыбы от рыбака.
+        Альтернативная гипотеза состоит в том, что распределение видов рыбы зависит от рыбака.
+        \item {[3]} Укажите $p$-значение для теста из пункта (а) с помощью подходящей функции распределения.
+        Явно напишите, какая функция распределения используется. 
+    \end{enumerate}
+
+    Квантили уровня 95\% для $\chi^2$-распределение: $\chi^2_1 = 3.84$, $\chi^2_2 = 5.99$, $\chi^2_3 = 7.81$.
+
+
+    \item Сёгун Минамото-но Ёритомо хочет отбирать на службу только опытных самураев. 
+    Сила удара меча у опытного самурая равномерно распределена на отрезке $[3; 7]$,
+    а у неопытного — равномерно на отрезке $[0; 4]$.
+
+    Испытуемый самурай бьёт мечом и если сила удара оказалась больше порога $a$, то Ёримото принимает самурая на работу.
+
+    Существует два типа ошибок. 
+    Ошибка первого рода: на работу взяли неопытного самурая. 
+    Ошибка второго рода: опытному самураю отказали в работе. 
+
+    \begin{enumerate}
+        \item {[3]} Найдите вероятности ошибок первого и второго рода при $a = 3.5$.
+        \item {[7]} Постройте кривую зависимости ошибки второго рода от ошибки первого рода при различных порогах $a$.
+    \end{enumerate}
+
+
+    
+    \item {[10]} Независимые величины $X_1$, $X_2$ распределены равномерно на отрезке $[0, a]$, где $a$ — неизвестный параметр.
+    Мы наблюдаем только $X_1$.
+    Постройте 95\%-й предиктивный интервал вида $[0, kX_1]$ для $X_2$. 
+
+
+    \item Величины $(x_i)$ независимы и одинаково распределены с неизвестным ожиданием $\mu_x$ и конечной дисперсией.
+    Величины $(y_i)$ независимы и одинаково распределены со своим неизвестным ожиданием $\mu_y$ и конечной дисперсией. 
+    По независимым выборкам размера $n_x = 1000$, $n_y = 500$ оказалось, что $\bar x = 20$, $\bar y = 21$,
+    а несмещённые выборочные дисперсии равны $200$ и $300$ соответственно. 
+
+    Винни-Пух хочет протестировать гипотезу $H_0$: $\mu_x  = \mu_y$ против альтернативы $H_1$: $\mu_y > \mu_x$ на уровне значимости $2.5\%$.
+    \begin{enumerate}
+        \item {[7]} Проведите данные тест с помощью сравнения критического и наблюдаемого значения классической статистики. 
+        \item {[3]} Укажите $p$-значение для теста из пункта (a) с помощью подходящей функции распределения.
+    \end{enumerate}
+
+    \item {[10]} Комиссар Жильбер измерил время приезда в минутах четырёх жёлтых такси, $x = (x_1, x_2, x_3, x_4)$, и четырёх белых такси $y = (y_1, y_2, y_3, y_4)$.
+    Предположим, что законы распределения времени приезда непрерывны и могут отличаться только сдвигом на параметр $\mu$. 
+    Наблюдения независимы.  Жильбер хочет проверить с помощью теста Манна-Уитни гипотезу $\mu = 0$ против альтернативы $\mu \neq 0$ на уровне значимости $5\%$.
+    \begin{enumerate}
+        \item {[4]} Чему равно максимально возможное значение статистики Манна Уитни в данном эксперименте? 
+        Чему равна вероятность данного значения при верной $H_0$?
+        \item {[6]} Проведите тест для выборок $x = (3.5, 6.5, 3.4, 2.8)$ и $y = (1.9, 2.5, 5.9, 1.6)$.
+        Будет считать, что в данном случае корректно использовать нормальную аппроксимацию вместо точного закона распределения Манна-Уитни.
+    \end{enumerate}
+    
+    
+    
+
+    \item Априорная функция плотности параметра $a$ равна $2a$ на отрезке $[0, 1]$ и нулю иначе.
+    Наблюдаемая величина $X$ распределена равномерно на отрезке $[0, a]$ при фиксированном $a$.
+
+    У нас есть единственное наблюдение, $X = 0.7$.
+
+    \begin{enumerate}
+        \item {[5]} Найдите апостериорное распределение параметра $a$. 
+        \item {[3]} Найдите апостериорное ожидание и медиану параметра $a$. 
+        \item {[2]} Постройте любой 94\% апостериорный интервал для $a$. 
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+
+
+
+\end{document}
+
