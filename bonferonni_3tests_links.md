@@ -4,6 +4,7 @@ https://cpb-us-w2.wpmucdn.com/blog.nus.edu.sg/dist/0/3425/files/2018/10/Understa
 http://engr.case.edu/ray_soumya/mlrg/controlling_fdr_benjamini95.pdf
 https://en.wikipedia.org/wiki/%C5%A0id%C3%A1k_correction
 https://habr.com/ru/articles/772940/
+https://stats.stackexchange.com/questions/495211/proof-derivation-for-false-discovery-rate-in-benjamini-hochberg-procedure
 
 
 lr, lm, wald,
